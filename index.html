@@ -3,15 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TTS Player</title>
+    <title>TTS Player with Popup</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="tts-player">
-        <button id="playPauseBtn">▶ Play</button>
-        <p id="text">This is a sample text-to-speech player. Click Play to listen!</p>
+
+    <!-- TTS Button Inside Article -->
+    <div class="tts-container" id="ttsButton">
+        <button id="playPauseBtn">▶</button>
+        <div>
+            <p>Listen to this article</p>
+            <p class="duration">4 min</p>
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <article id="blog-content">
+        <h1>Tom Hardy Leads Brutal Action in HAVOC</h1>
+        <p>Tom Hardy is once again displaying his prowess in the thrilling movie HAVOC...</p>
+        <p>According to The Hollywood Reporter, HAVOC follows the story of Walker...</p>
+    </article>
+
+    <!-- Floating Popup -->
+    <div class="tts-popup hidden" id="ttsPopup">
+        <button id="popupPlayPauseBtn">▶</button>
+        <p>Listen to this article</p>
+        <button id="popupCloseBtn">✖</button>
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>
