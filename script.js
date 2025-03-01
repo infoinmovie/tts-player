@@ -1,20 +1,41 @@
-const button = document.getElementById("playPauseBtn");
-let isPlaying = false;
-const text = "After years of delays and anticipation, A Minecraft Movie is finally set to hit theaters on April 4, 2025. This live-action adaptation of the world’s best-selling game promises an epic adventure with a star-studded cast and a fresh creative approach.!";
+document.addEventListener("DOMContentLoaded", function () {
+    let button = document.getElementById("playPauseBtn");
+    let synth = window.speechSynthesis;
+    let utterance;
+    let isPaused = false;
+    let lastPosition = 0;
+    let articleText = document.getElementById("blog-content").innerText;
 
-// Create speech synthesis
-const speech = new SpeechSynthesisUtterance(text);
-speech.rate = 1.0;
-speech.pitch = 1.0;
-speech.lang = "en-US";
+    function playTTS() {
+        utterance = new SpeechSynthesisUtterance(articleText.substring(lastPosition));
+        utterance.lang = "en-US"; // Ubah ke "id-ID" untuk bahasa Indonesia
+        
+        utterance.onboundary = function (event) {
+            lastPosition += event.charIndex; // Menyimpan posisi terakhir sebelum pause
+        };
 
-button.addEventListener("click", function() {
-    if (!isPlaying) {
-        speechSynthesis.speak(speech);
-        button.classList.add("pause");
-    } else {
-        speechSynthesis.cancel();
-        button.classList.remove("pause");
+        utterance.onend = function () {
+            button.innerHTML = "▶ Listen";
+            lastPosition = 0; // Reset setelah selesai
+            isPaused = false;
+        };
+
+        synth.speak(utterance);
+        button.innerHTML = "⏸ Pause";
+        isPaused = false;
     }
-    isPlaying = !isPlaying;
+
+    button.addEventListener("click", function () {
+        if (synth.speaking && !isPaused) {
+            synth.pause();
+            button.innerHTML = "▶ Resume";
+            isPaused = true;
+        } else if (isPaused) {
+            synth.resume();
+            button.innerHTML = "⏸ Pause";
+            isPaused = false;
+        } else {
+            playTTS();
+        }
+    });
 });
