@@ -15,7 +15,7 @@ Aside from Tom Hardy, Havoc is filled with talented actors including Forest Wh
 One of the most awaited movies this year, Havoc has an ensemble cast, alluring chemistry from the trailer, and Evans' distinct style of action.
 Netflix Ready to Deliver Non-Stop Action
 As one of Netflix's major releases this year, Havoc has great potential to gain global spotlight. With its combination of brutal action, deep narrative, and high-quality actors, this movie could follow in the footsteps of The Raid's success and reintroduce Gareth Evans' cinematic style to the world.
-For fans of intense and gripping action movies, Havoc is a must-watch. Mark your calendar and get ready to witness Tom Hardy's high-energy performance in a movie that will shake your screen on April 25, 2025."
+For fans of intense and gripping action movies, Havoc is a must-watch. Mark your calendar and get ready to witness Tom Hardy's high-energy performance in a movie that will shake your screen on April 25, 2025.";
 
 // Create speech synthesis
 const speech = new SpeechSynthesisUtterance(text);
